@@ -13,6 +13,12 @@ var ADVDemo = angular.module('ADVDemo', ['ngMaterial', 'ngAnimate', 'ngMessages'
 		controller: 'seleccionController'
 	})
 
+    .state('logincabina', {
+        url: '/logincabina',
+        templateUrl: 'partials/logincabina-partial.html',
+        controller: 'logincabinaController'
+    })
+
 	.state('home', {
             url: '/',
             templateUrl: 'partials/home-partial.html',
