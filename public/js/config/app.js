@@ -15,6 +15,13 @@ var ADVDemo = angular.module('ADVDemo', ['ngMaterial', 'ngAnimate', 'ngMessages'
             url: '/about',
             templateUrl: 'partials/about-partial.html',
             controller: 'AboutController'
+        })
+
+        .state('main', {
+            url: '/main',
+            abstract: true,
+            templateUrl: 'partials/main-partial.html',
+            controller: 'mainController'
         });
     }]);
 })(ADVDemo);

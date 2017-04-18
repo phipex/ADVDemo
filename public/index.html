@@ -8,7 +8,32 @@
 </head>
 
 <body ng-app="ADVDemo" ng-cloak>
-    <h1 class="md-display-1 text-center">ADVDemo</h1>
+<div layout="column" layout-fill ng-controller="mainController as main">
+    <md-toolbar>
+
+        <div class="md-toolbar-tools">
+            <h2 md-truncate flex>ADV<span ng-show="main.seleccionActual != null">{{' - ' + main.seleccionActual}}</span></h2>
+            <md-button>
+                Right Bar Button
+            </md-button>
+        </div>
+
+    </md-toolbar>
+    <md-content>
+        <!--<h2>home</h2>
+        <p>{{home.ctrlName}}</p>-->
+
+        <md-nav-bar md-selected-nav-item="" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-sref="home" name="home">Home</md-nav-item>
+            <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
+            <md-nav-item md-nav-sref="seleccion" name="about">Seleccion</md-nav-item>
+        </md-nav-bar>
+
+    </md-content>
+    <div ui-view ng-animate="'view'" ng-cloak></div>
+</div>
+
+    <!--<h1 class="md-display-1 text-center">ADVDemo</h1>
     <div class="text-center"><md-icon md-svg-src="/public/images/angular-logo.svg" aria-label="Angular"></md-icon></div>
     <md-content class="md-padding" layout="row" layout-align="center">
         <md-nav-bar md-selected-nav-item="" nav-bar-aria-label="navigation links">
@@ -16,7 +41,7 @@
             <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
         </md-nav-bar>
     </md-content>
-    <div ui-view></div>
+    <div ui-view></div>-->
     <!-- inject:js -->
     <!-- endinject -->
 </body>
