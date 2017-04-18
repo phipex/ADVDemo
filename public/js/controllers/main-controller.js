@@ -5,6 +5,7 @@
         $rootScope.seleccionActual = main.seleccionActual;
         $scope.$on('to_parent', function (event, data) {
             main.seleccionActual = data;
+            $rootScope.seleccionActual = data;
         });
 	}]);
 })(ADVDemo);
