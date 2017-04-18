@@ -5,7 +5,15 @@ var ADVDemo = angular.module('ADVDemo', ['ngMaterial', 'ngAnimate', 'ngMessages'
 
         $urlRouterProvider.otherwise('/');
 
-        $stateProvider.state('home', {
+        $stateProvider
+
+            .state('seleccion', {
+		url: '/seleccion',
+		templateUrl: 'partials/seleccion-partial.html',
+		controller: 'seleccionController'
+	})
+
+	.state('home', {
             url: '/',
             templateUrl: 'partials/home-partial.html',
             controller: 'HomeController'
