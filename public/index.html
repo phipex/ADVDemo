@@ -12,7 +12,11 @@
     <md-toolbar>
 
         <div class="md-toolbar-tools">
-            <h2 md-truncate flex>ADV<span ng-show="main.seleccionActual != null">{{' - ' + main.seleccionActual}}</span></h2>
+            <h2 md-truncate flex>
+                <a ui-sref="seleccion">
+                    ADV<span ng-show="main.seleccionActual != null">{{' - ' + main.seleccionActual}}</span>
+                </a>
+            </h2>
             <md-button>
                 Right Bar Button
             </md-button>

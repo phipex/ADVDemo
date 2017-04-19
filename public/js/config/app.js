@@ -1,41 +1,47 @@
-var ADVDemo = angular.module('ADVDemo', ['ngMaterial', 'ngAnimate', 'ngMessages', 'ngAria', 'ui.router']);
+    var ADVDemo = angular.module('ADVDemo', ['ngMaterial', 'ngAnimate', 'ngMessages', 'ngAria', 'ui.router']);
 
-(function(app) {
-    app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+    (function(app) {
+        app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-        $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/');
 
-        $stateProvider
+            $stateProvider
 
-            .state('seleccion', {
-		url: '/seleccion',
-		templateUrl: 'partials/seleccion-partial.html',
-		controller: 'seleccionController'
-	})
-
-    .state('logincabina', {
-        url: '/logincabina',
-        templateUrl: 'partials/logincabina-partial.html',
-        controller: 'logincabinaController'
-    })
-
-	.state('home', {
-            url: '/',
-            templateUrl: 'partials/home-partial.html',
-            controller: 'HomeController'
+                .state('seleccion', {
+            url: '/seleccion',
+            templateUrl: 'partials/seleccion-partial.html',
+            controller: 'seleccionController'
         })
 
-        .state('about', {
-            url: '/about',
-            templateUrl: 'partials/about-partial.html',
-            controller: 'AboutController'
+                .state('acciones', {
+                url: '/acciones',
+                templateUrl: 'partials/acciones-partial.html',
+                controller: 'accionesController'
+            })
+
+        .state('logincabina', {
+            url: '/logincabina',
+            templateUrl: 'partials/logincabina-partial.html',
+            controller: 'logincabinaController'
         })
 
-        .state('main', {
-            url: '/main',
-            abstract: true,
-            templateUrl: 'partials/main-partial.html',
-            controller: 'mainController'
-        });
-    }]);
-})(ADVDemo);
+        .state('home', {
+                url: '/',
+                templateUrl: 'partials/home-partial.html',
+                controller: 'HomeController'
+            })
+
+            .state('about', {
+                url: '/about',
+                templateUrl: 'partials/about-partial.html',
+                controller: 'AboutController'
+            })
+
+            .state('main', {
+                url: '/main',
+                abstract: true,
+                templateUrl: 'partials/main-partial.html',
+                controller: 'mainController'
+            });
+        }]);
+    })(ADVDemo);

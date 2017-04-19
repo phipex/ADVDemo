@@ -1,18 +1,38 @@
 <div ng-controller="logincabinaController as loginCabina">
-	<md-content>
-		<h2 class="text-center">--{{loginCabina.seleccionActual}}--</h2>
-		<md-content
-				class="md-padding text-center"
-				layout="row"
-				layout-align="center">
-			<span>--{{loginCabina.cedula}}--</span>
-			<md-input-container>
-				<label>Cedula</label>
-				<input ng-model="loginCabina.cedula" ng-click="loginCabina.onTouch()">
+	<div layout="column">
+		<div flex>
+			<p class="text-center md-display-2">
+				Ingresando a <br>
+				<strong>{{loginCabina.seleccionActual}}</strong>
+			</p>
+		</div>
+		<div flex>
+			<md-content class="md-padding text-center"
+						layout="row"
+						layout-align="center">
+				<md-input-container flex="50">
+					<label>Cedula</label>
+					<input ng-model="loginCabina.cedula" ng-click="loginCabina.onTouch()">
 
-			</md-input-container>
+				</md-input-container>
+			</md-content>
 
-		</md-content>
-		<md-button class="text-center" type="submit" ng-click="loginCabina.onIngresar()">Ingresar</md-button>
-	</md-content>
+
+		</div>
+        <div flex>
+            <div class="text-center">
+                <md-button class="text-center md-raised md-primary" type="submit" ng-click="loginCabina.onIngresar($event)">Ingresar</md-button>
+            </div>
+        </div>
+	</div>
+	<div style="visibility: hidden">
+		<div class="md-dialog-container" id="myDialog">
+			<md-dialog layout-padding>
+				<h2>Fallo</h2>
+				<p>
+					No ha ingresado una cedula valida
+				</p>
+			</md-dialog>
+		</div>
+	</div>
 </div>

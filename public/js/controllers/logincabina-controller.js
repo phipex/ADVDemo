@@ -1,19 +1,33 @@
 (function(app) {
-	app.controller('logincabinaController', ['$scope', '$state', '$rootScope', function($scope, $state, $rootScope) {
+	app.controller('logincabinaController', ['$scope', '$state', '$rootScope', '$mdDialog', function($scope, $state, $rootScope, $mdDialog) {
         var loginCabina = this;
 
         loginCabina.seleccionActual = $rootScope.seleccionActual;
         loginCabina.onTouch = onTouch;
         loginCabina.onIngresar = onIngresar;
         loginCabina.cedula = null;
+        loginCabina.mensajeError = {
+          msg: null,
+          show: false
+        };
 
         console.log('loginCabina.seleccionActual',loginCabina.seleccionActual);
         if(loginCabina.seleccionActual == null){
             $state.go('seleccion');
         }
 
-        function onIngresar() {
-            
+        function onIngresar($event) {
+            if (loginCabina.cedula) {
+                $state.go('acciones');
+            }else{
+                $mdDialog.show({
+                    contentElement: '#myDialog',
+                    //parent: angular.element(document.body),
+                    targetEvent: $event,
+                    clickOutsideToClose: true
+                });
+            }
+
         }
         
         function onTouch() {
