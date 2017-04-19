@@ -89,7 +89,11 @@ gulp.task('js', function() {
 });
 
 gulp.task('bower', ['index', 'index:dist'], function() {
-    return gulp.src(['./bower_components/**/*.min.js', './bower_components/**/*.min.css'])
+    return gulp.src([
+        './bower_components/**/*.min.js',
+        './bower_components/**/*.min.css',
+        './bower_components/**/fonts/*'
+    ])
         .pipe(gulp.dest('./dev/bower_components'))
         .pipe(gulp.dest('./dist/bower_components'));
 });
