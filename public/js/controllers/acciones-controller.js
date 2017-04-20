@@ -16,7 +16,7 @@
         function onIngresar($event) {
 
             if (acciones.recarga) {
-                var promesa = $mdDialog.show({
+                $mdDialog.show({
                     contentElement: '#dialogRecargaSuccess',
                     //parent: angular.element(document.body),
                     targetEvent: $event,
