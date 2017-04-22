@@ -1,12 +1,15 @@
-<div ng-controller="accionesController as acciones">
-
-
+<div ng-controller="accionesController as acciones" class="fullHeight boxme" ng-style="{'background-color': acciones.seleccionActual.color}">
+	<div layout="column" class="text-center" layout-align="center center">
+			<div flex class="text-center" layout-align="center center" style="width: 10%;">
+			<img ng-src="{{'public/images/logos/' + acciones.seleccionActual.nombre + '_opt.png'}}" class="md-card-image seleccionImage" alt="Washed Out">
+		</div>
+	</div>
 	<md-content>
-		<md-tabs md-dynamic-height md-border-bottom>
+		<md-tabs md-dynamic-height md-border-bottom ng-style="{'background-color': acciones.seleccionActual.color}">
 			<md-tab label="Recarga">
 				<div layout="column">
 					<div flex class="text-center md-display-1">
-						<h1 class="md-display-2">Recarga en <strong>{{acciones.seleccionActual}}</strong></h1>
+						<h1 class="md-display-2">Recarga en <strong>{{acciones.seleccionActual.nombre}}</strong></h1>
 					</div>
 					<div flex class="text-center md-display-2">
 						Ingrese la cantidad que desea recargar
@@ -23,7 +26,7 @@
 								class="md-padding text-center"
 								layout="row"
 								layout-align="center"
-
+								ng-style="{'background-color': acciones.seleccionActual.color}"
 						>
 
 							<md-input-container class="md-icon-float"  >
@@ -45,7 +48,7 @@
 							<md-dialog layout-padding>
 								<h2>Carga Exitosa</h2>
 								<p>
-									La carga por {{acciones.recarga | currency:"$":0}} a {{acciones.seleccionActual}} ha sido realizada exitosamente
+									La carga por {{acciones.recarga | currency:"$":0}} a {{acciones.seleccionActual.nombre}} ha sido realizada exitosamente
 								</p>
 							</md-dialog>
 						</div>
@@ -55,19 +58,112 @@
 
 			</md-tab>
 			<md-tab label="Apuesta">
-				<md-content class="md-padding">
+				<md-content class="md-padding" layout-align="center" ng-style="{'background-color': acciones.seleccionActual.color}">
 					<h1 class="md-display-2">Apuesta</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-					<p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-					<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+						<h2>Seleccione la liga en la cual desea apostar</h2>
+						<div flex ng-cloak layout-align="center">
+							<md-grid-list
+						        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+						        md-row-height-gt-md="1:1" md-row-height="4:3"
+						        md-gutter="8px" md-gutter-gt-sm="4px"
+						        class="gridListdemoDynamicTiles center" >
+
+						    <md-grid-tile ng-repeat="tile in acciones.tiles"
+						                  md-rowspan="{{tile.span.row}}"
+						                  md-colspan="{{tile.span.col}}"
+						                  md-colspan-sm="1"
+						                  md-colspan-xs="1"
+						                  ng-class="tile.background"
+						                   >
+
+						      <md-grid-tile-footer><h3>{{tile.title}} ({{tile.span.row}}{{tile.span.col}})</h3></md-grid-tile-footer>
+						    </md-grid-tile>
+						  </md-grid-list>
+						</div>
+						
+
 				</md-content>
 			</md-tab>
-			<md-tab label="Info Cuenta">
-				<md-content class="md-padding">
+			<md-tab label="Info Cuenta" ng-style="{'background-color': acciones.seleccionActual.color}">
+				<md-content class="md-padding" ng-style="{'background-color': acciones.seleccionActual.color}">
 					<h1 class="md-display-2">Info Cuenta</h1>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
-					<p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra quam, at semper massa orci nec magna. Donec posuere nec sapien sed laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-					<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+					<div ng-cloak ng-style="{'background-color': acciones.seleccionActual.color}">
+					  <md-content ng-style="{'background-color': acciones.seleccionActual.color}">
+					    <md-tabs md-dynamic-height md-border-bottom ng-style="{'background-color': acciones.seleccionActual.color}">
+					      <md-tab label="Datos de usuario" ng-style="{'background-color': acciones.seleccionActual.color}">
+					        <md-content  flex="70" layout-align="center center"  class="md-padding" ng-style="{'background-color': acciones.seleccionActual.color}">
+					          <h1 class="md-display-2">Datos de usuario</h1>
+					          <md-content class="md-no-momentum" ng-style="{'background-color': acciones.seleccionActual.color}">
+							    <md-input-container class="md-icon-float md-block">
+							      <!-- Use floating label instead of placeholder -->
+							      <label>Nombre</label>
+							      <md-icon md-font-icon="fa fa-user"></md-icon>
+							      <input  type="text" value="Pepito Perez">
+							    </md-input-container>
+
+							    <md-input-container md-no-float class="md-block">
+							      <md-icon md-font-icon="fa fa-phone"></md-icon>
+							      <input  type="text" placeholder="Telefono fijo" value="555-55-55">
+							    </md-input-container>
+
+							    <md-input-container md-no-float class="md-block">
+							      <md-icon md-font-icon="fa fa-mobile"></md-icon>
+							      <input  type="text" placeholder="Celular" value="500 555-55-55">
+							    </md-input-container>
+
+							    <md-input-container class="md-block">
+							      <!-- Use floating placeholder instead of label -->
+							      <md-icon md-font-icon="fa fa-envelope-o"></md-icon>
+							      <input type="email" placeholder="Email (requerido)" ng-required="true" value="ies@iesonline.net">
+							    </md-input-container>
+
+							    <md-input-container md-no-float class="md-block">
+							      <md-icon md-font-icon="fa fa-location-arrow"></md-icon>
+							      <input  type="text" placeholder="Direccion" value="Medellin, Calle 6 No 50 - 90">
+							      
+							    </md-input-container>
+
+							    <md-input-container class="md-block">
+							      <label>Saldo</label>
+							      <md-icon md-font-icon="fa fa-money"></md-icon>
+							      <input  type="number" step="0.01" value="500000">
+							      
+							    </md-input-container>
+
+							  </md-content>
+					        </md-content>
+					      </md-tab>
+					      <md-tab label="Cambiar contraseña" ng-style="{'background-color': acciones.seleccionActual.color}">
+					        <md-content class="md-padding" ng-style="{'background-color': acciones.seleccionActual.color}">
+					          <h1 class="md-display-2">Cambiar contraseña</h1>
+					          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui mattis vulputate. Etiam consequat aliquam cursus. In sodales pretium ultrices. Maecenas lectus est, sollicitudin consectetur felis nec, feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a tellus. Vivamus convallis sodales ante varius gravida. Curabitur a purus vel augue ultrices ultricies id a nisl. Nullam malesuada consequat diam, a facilisis tortor volutpat et. Sed urna dolor, aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus, pulvinar at interdum quis, vehicula sed odio. Phasellus in enim venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec luctus mauris semper.</p>
+					          
+					        </md-content>
+					      </md-tab>
+					      <md-tab label="Historial de apuestas" ng-style="{'background-color': acciones.seleccionActual.color}">
+					        <md-content class="md-padding" ng-style="{'background-color': acciones.seleccionActual.color}">
+					          <h1 class="md-display-2">Historial de apuestas</h1>
+					          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+					        </md-content>
+					      </md-tab>
+					      <md-tab label="Preguntas frecuentes" ng-style="{'background-color': acciones.seleccionActual.color}">
+					        <md-content class="md-padding" ng-style="{'background-color': acciones.seleccionActual.color}">
+					          <h1 class="md-display-2">Preguntas frecuentes</h1>
+					          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+					        </md-content>
+					      </md-tab>
+					      <md-tab label="Terminos y condiciones" ng-style="{'background-color': acciones.seleccionActual.color}">
+					        <md-content class="md-padding" ng-style="{'background-color': acciones.seleccionActual.color}">
+					          <h1 class="md-display-2">Terminos y condiciones</h1>
+					          <p>Integer turpis erat, porttitor vitae mi faucibus, laoreet interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+					        </md-content>
+					      </md-tab>
+					    </md-tabs>
+					  </md-content>
+					</div>
+
+
+
 				</md-content>
 			</md-tab>
 		</md-tabs>

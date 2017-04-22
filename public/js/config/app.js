@@ -3,7 +3,7 @@
     (function(app) {
         app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/seleccion');
 
             $stateProvider
 

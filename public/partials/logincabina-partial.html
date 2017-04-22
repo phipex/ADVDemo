@@ -1,15 +1,23 @@
-<div ng-controller="logincabinaController as loginCabina">
-	<div layout="column">
-		<div flex>
-			<p class="text-center md-display-2">
-				<md-icon md-font-icon="fa fa-user-circle"></md-icon></span>Ingresando a <br>
-				<strong>{{loginCabina.seleccionActual}}</strong>
-			</p>
+<div ng-controller="logincabinaController as loginCabina" class="fullHeight" ng-style="{'background-color': loginCabina.seleccionActual.color}">
+
+	<div layout="column" class="fullHeight text-center" layout-align="center center">
+
+		<div flex class="text-center" layout-align="center center" style="width: 10%;height: 10%; padding: 10px; margin: 10px">
+			<img ng-src="{{'public/images/logos/' + loginCabina.seleccionActual.nombre + '_opt.png'}}" class="md-card-image seleccionImage" alt="Washed Out">
 		</div>
 		<div flex>
+
+			<div class="text-center md-display-2">
+				<md-icon md-font-icon="fa fa-user-circle"></md-icon>  Ingresando a <br>
+				<strong>{{loginCabina.seleccionActual.nombre}}</strong>
+			</div>
+		</div>
+		<div flex >
 			<md-content class="md-padding text-center md-display-1"
 						layout="row"
-						layout-align="center">
+						layout-align="center"
+						ng-style="{'background-color': loginCabina.seleccionActual.color}"
+			>
 				<md-input-container flex="50">
 					<label>Cedula</label>
 					<input ng-model="loginCabina.cedula" ng-click="loginCabina.onTouch()">
