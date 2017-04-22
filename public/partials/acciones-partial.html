@@ -31,8 +31,8 @@
 
 							<md-input-container class="md-icon-float"  >
 								<label>Carga</label>
-								<md-icon md-font-icon="fa fa-money"></md-icon>
-								<input ng-model="acciones.recarga" ng-click="acciones.onTouch()">
+								<md-icon md-font-icon="fa fa-money fa-2x"></md-icon>
+								<span>   </span><input ng-model="acciones.recarga" ng-click="acciones.onTouch()">
 
 							</md-input-container>
 
@@ -75,7 +75,7 @@
 						                  md-colspan-xs="1"
 						                  ng-class="tile.background"
 						                   >
-
+								<span class="text-center">{{tile.span.row}}{{tile.span.col}} Partidos</span>
 						      <md-grid-tile-footer><h3>{{tile.title}} ({{tile.span.row}}{{tile.span.col}})</h3></md-grid-tile-footer>
 						    </md-grid-tile>
 						  </md-grid-list>

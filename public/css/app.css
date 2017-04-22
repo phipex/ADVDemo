@@ -33,6 +33,11 @@
     height: 100%;
     width: 100%; }
 
+.gridListdemoDynamicTiles md-grid-tile {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05); }
+
 .gridListdemoDynamicTiles md-icon {
   width: 50%;
   height: 30%; }

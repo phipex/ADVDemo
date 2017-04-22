@@ -27,13 +27,13 @@
 
         function onSelect(nameItem) {
             $scope.showme = false;
-            $timeout(function () {
+
                 var item = seleccion.listaProvedores2[nameItem];
                 console.log(item);
 
                 $scope.$emit('to_parent', item);
                 $state.go('logincabina');
-            },1000);
+
 
 
         }
