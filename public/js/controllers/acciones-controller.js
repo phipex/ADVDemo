@@ -1,14 +1,16 @@
+var valor = {valor:0};
 (function(app) {
-	app.controller('accionesController', ['$scope', '$rootScope', '$state', '$mdDialog','$mdToast', function($scope,$rootScope, $state, $mdDialog, $mdToast) {
+	app.controller('accionesController', ['$scope', '$rootScope', '$state', '$mdDialog','$mdToast','Billetero','$timeout', function($scope,$rootScope, $state, $mdDialog, $mdToast, Billetero, $timeout) {
 		var acciones = this;
 
 
         acciones.seleccionActual = $rootScope.seleccionActual;
         acciones.onTouch = onTouch;
         acciones.onIngresar = onIngresar;
-        acciones.recarga = 0;
-        acciones.ligas = ligas;
+        acciones.recarga = valor;
+        $scope.recarga = acciones.recarga;
 
+        acciones.ligas = ligas;
 
         console.log('loginCabina.seleccionActual',acciones.seleccionActual);
         if(acciones.seleccionActual == null){
@@ -17,7 +19,7 @@
 
         function onIngresar($event) {
 
-            if (acciones.recarga) {
+            if (acciones.recarga.valor) {
                 $mdDialog.show({
                     contentElement: '#dialogRecargaSuccess',
                     //parent: angular.element(document.body),
@@ -25,27 +27,40 @@
                     clickOutsideToClose: true
                 }).finally(function (event) {
                     console.log(event);
-                    acciones.recarga = 0;
+                    acciones.recarga.valor = 0;
+                    //$scope.recarga = 0;
                 });
             }else{
 
             }
         }
 
-        function onTouch(ev) {
-            console.log(acciones.recarga);
-            acciones.recarga += 10000;
+        function mostrarRecarga(valor) {
             var alert = $mdDialog.alert({
                 title: 'Nuevo Billete',
-                textContent: 'Un nuev billete de $10.000 pesos a sido ingresado',
+                textContent: 'Un nuev billete de $'+valor+' pesos a sido ingresado',
                 ok: 'Close'
             });
 
             $mdDialog
-                .show( alert )
-                .finally(function() {
+                .show(alert)
+                .finally(function () {
                     //alert = undefined;
                 });
+        }
+
+        function addRecarga(valor) {
+            //acciones.recarga.valor += valor;
+            console.log($scope.recarga.valor+'');
+            $scope.recarga.valor  += valor;
+            mostrarRecarga($scope.recarga.valor);
+            console.log($scope.recarga.valor+'');
+        }
+
+        function onTouch(ev) {
+            console.log(acciones.recarga);
+            addRecarga(10000);
+
 
         }
 
@@ -58,18 +73,18 @@
         //ligas
 
     var keysLigas = Object.keys(ligas);
-    console.log(keysLigas);
+    //console.log(keysLigas);
     var nameLigas = []; 
     for (var i = keysLigas.length - 1; i >= 0; i--) {
         var key = keysLigas[i];
         var liga = ligas[key];
         nameLigas.push(liga.name);
     }
-    console.log(nameLigas);
+    //console.log(nameLigas);
 
     function getRamdonLiga() {
        var indice =  Math.floor((Math.random()*(nameLigas.length))+1);
-       console.log(nameLigas[indice]);
+       //console.log(nameLigas[indice]);
        return nameLigas[indice];
     }
 
@@ -119,7 +134,49 @@
       }
       return results;
     }
+        //********** websocekt
 
+        $scope.WebSocket = Billetero;
+        $scope.MyData = Billetero.collection;
+        var stateDic = Billetero.stateDic,
+            keyStates = Object.keys(stateDic);
+        $scope.estadoActual = null;
+        $scope.estado = Billetero.state;
+        $scope.open=function(){
+            if($scope.estado != 'OPEN'){
+                Billetero.open();
+            }
+
+        };
+        Billetero.open();
+        var onMensaje = function(mesageEvent){
+            //console.log("++++++++++");
+            //var _this = this;
+            //console.log("_this",_this);
+            var objetoMsg = JSON.parse(mesageEvent.data);
+            console.log("objetoMsg",objetoMsg);
+
+            //console.log(mesageEvent);
+            //console.log(WebSocket);
+
+            $timeout(function () {
+
+                console.log($scope.recarga.valor+'');
+                addRecarga(objetoMsg.valor);
+
+                //mostrarRecarga(acciones.recarga.valor);
+                console.log($scope.recarga.valor+'');
+            },500);
+        };
+
+
+
+        //console.log("control.addListener");
+        Billetero.addListener(onMensaje);
+        $scope.$watch("estado()",function(){
+            var estadoActual = $scope.estado();
+            $scope.estadoActual = stateDic[estadoActual];
+        });
     
 
 	}]);
