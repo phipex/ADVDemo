@@ -7,25 +7,26 @@
     <!-- endinject -->
 </head>
 
-<body ng-app="ADVDemo" ng-cloak>
+<body ng-app="ADVDemo">
 <div layout="column" layout-fill ng-controller="mainController as main">
     <md-toolbar>
 
         <div class="md-toolbar-tools">
             <h2 md-truncate flex>
                 <a ui-sref="seleccion">
-                    ADV<span ng-show="main.seleccionActual != null">{{' - ' + main.seleccionActual}}</span>
+                    <md-icon md-font-icon="fa fa-futbol-o fa-lg"></md-icon>
+                    ADV<span ng-show="main.seleccionActual.nombre != null">{{' - ' + main.seleccionActual.nombre}}</span>
                 </a>
             </h2>
-            <md-button>
-                Right Bar Button
+            <md-button ng-show="main.seleccionActual.nombre != null" ng-click="main.close()">
+                Salir
             </md-button>
         </div>
 
     </md-toolbar>
-    <md-content>
-        <!--<h2>home</h2>
-        <p>{{home.ctrlName}}</p>-->
+    <!-- <md-content>
+        <h2>home</h2>
+        <p>{{home.ctrlName}}</p>
 
         <md-nav-bar md-selected-nav-item="" nav-bar-aria-label="navigation links">
             <md-nav-item md-nav-sref="home" name="home">Home</md-nav-item>
@@ -33,9 +34,9 @@
             <md-nav-item md-nav-sref="seleccion" name="about">Seleccion</md-nav-item>
         </md-nav-bar>
 
-    </md-content>
-    <div class="ui-view-container">
-        <div class="well" ui-view ng-cloak></div>
+    </md-content> -->
+    <div class="ui-view-container fullHeight" ng-style="{'background-color': main.seleccionActual.color}">
+        <div class="well fullHeight seleccionBackground" ui-view ng-style="{'background-color': main.seleccionActual.color}"></div>
     </div>
 
 </div>

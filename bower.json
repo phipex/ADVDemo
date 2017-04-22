@@ -23,6 +23,7 @@
   ],
   "dependencies": {
     "angular-ui-router": "^0.4.2",
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "angular-websocket": "^2.0.0"
   }
 }
