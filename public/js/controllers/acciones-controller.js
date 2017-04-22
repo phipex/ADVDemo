@@ -1,5 +1,5 @@
 (function(app) {
-	app.controller('accionesController', ['$scope', '$rootScope', '$state', '$mdDialog', function($scope,$rootScope, $state, $mdDialog) {
+	app.controller('accionesController', ['$scope', '$rootScope', '$state', '$mdDialog','$mdToast', function($scope,$rootScope, $state, $mdDialog, $mdToast) {
 		var acciones = this;
 
 
@@ -32,9 +32,21 @@
             }
         }
 
-        function onTouch() {
+        function onTouch(ev) {
             console.log(acciones.recarga);
             acciones.recarga += 10000;
+            var alert = $mdDialog.alert({
+                title: 'Nuevo Billete',
+                textContent: 'Un nuev billete de $10.000 pesos a sido ingresado',
+                ok: 'Close'
+            });
+
+            $mdDialog
+                .show( alert )
+                .finally(function() {
+                    //alert = undefined;
+                });
+
         }
 
         function getAllLigas() {
