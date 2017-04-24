@@ -66,7 +66,7 @@
                 console.log((dataStream == null || dataStream && dataStream.readyState == 3 ),(dataStream && dataStream.readyState == 3))
                 if (dataStream == null || dataStream && dataStream.readyState == 3 ) {
                     console.log("WebSocket:: inicial");
-                    dataStream = $websocket('ws://localhost:8080');
+                    dataStream = $websocket('ws://localhost:1234');
                     dataStream.onMessage(function (message) {
                         collection.push(JSON.parse(message.data));
                         //console.log("onMessage",message);
