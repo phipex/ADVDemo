@@ -8,7 +8,7 @@
 </head>
 
 <body ng-app="ADVDemo">
-<div layout="column" layout-fill ng-controller="mainController as main">
+<div layout="column" layout-fill ng-cloak ng-controller="mainController as main">
     <md-toolbar>
 
         <div class="md-toolbar-tools">
@@ -36,7 +36,7 @@
 
     </md-content> -->
     <div class="ui-view-container fullHeight" ng-style="{'background-color': main.seleccionActual.color}">
-        <div class="well fullHeight seleccionBackground" ui-view ng-style="{'background-color': main.seleccionActual.color}"></div>
+        <div class="well fullHeight seleccionBackground" ui-view ng-cloak ng-style="{'background-color': main.seleccionActual.color}"></div>
     </div>
 
 </div>
