@@ -51,14 +51,14 @@ var valor = {valor:0};
 
         function addRecarga(valor) {
             //acciones.recarga.valor += valor;
-            console.log($scope.recarga.valor+'');
+            //console.log($scope.recarga.valor+'');
             $scope.recarga.valor  += valor;
             mostrarRecarga($scope.recarga.valor);
-            console.log($scope.recarga.valor+'');
+            //console.log($scope.recarga.valor+'');
         }
 
         function onTouch(ev) {
-            console.log(acciones.recarga);
+            //console.log(acciones.recarga);
             addRecarga(10000);
 
 

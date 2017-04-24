@@ -21,7 +21,8 @@ gulp.task('serve', ['init'], function() {
 
     browserSync.init({
         server: {
-            baseDir: './dev',
+            //baseDir: './dev',
+            baseDir: './',
             directory: true
         }
     });
