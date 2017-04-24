@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ADVDemo</title>
+    <!-- inject:css -->
+    <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="public/css/app.css">
+    <!-- endinject -->
+</head>
+
+<body ng-app="ADVDemo">
+<div layout="column" layout-fill ng-controller="mainController as main">
+    <md-toolbar>
+
+        <div class="md-toolbar-tools">
+            <h2 md-truncate flex>
+                <a ui-sref="seleccion">
+                    <md-icon md-font-icon="fa fa-futbol-o fa-lg"></md-icon>
+                    ADV<span ng-show="main.seleccionActual.nombre != null">{{' - ' + main.seleccionActual.nombre}}</span>
+                </a>
+            </h2>
+            <md-button ng-show="main.seleccionActual.nombre != null" ng-click="main.close()">
+                Salir
+            </md-button>
+        </div>
+
+    </md-toolbar>
+    <!-- <md-content>
+        <h2>home</h2>
+        <p>{{home.ctrlName}}</p>
+
+        <md-nav-bar md-selected-nav-item="" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-sref="home" name="home">Home</md-nav-item>
+            <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
+            <md-nav-item md-nav-sref="seleccion" name="about">Seleccion</md-nav-item>
+        </md-nav-bar>
+
+    </md-content> -->
+    <div class="ui-view-container fullHeight" ng-style="{'background-color': main.seleccionActual.color}">
+        <div class="well fullHeight seleccionBackground" ui-view ng-style="{'background-color': main.seleccionActual.color}"></div>
+    </div>
+
+</div>
+
+    <!--<h1 class="md-display-1 text-center">ADVDemo</h1>
+    <div class="text-center"><md-icon md-svg-src="/public/images/angular-logo.svg" aria-label="Angular"></md-icon></div>
+    <md-content class="md-padding" layout="row" layout-align="center">
+        <md-nav-bar md-selected-nav-item="" nav-bar-aria-label="navigation links">
+            <md-nav-item md-nav-sref="home" name="home">Home</md-nav-item>
+            <md-nav-item md-nav-sref="about" name="about">About</md-nav-item>
+        </md-nav-bar>
+    </md-content>
+    <div ui-view></div>-->
+    <!-- inject:js -->
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.min.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="bower_components/angular-material/angular-material.min.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="bower_components/angular-ui-router/src/common.js"></script>
+    <script src="bower_components/angular-ui-router/src/resolve.js"></script>
+    <script src="bower_components/angular-ui-router/src/state.js"></script>
+    <script src="bower_components/angular-ui-router/src/stateDirectives.js"></script>
+    <script src="bower_components/angular-ui-router/src/stateFilters.js"></script>
+    <script src="bower_components/angular-ui-router/src/templateFactory.js"></script>
+    <script src="bower_components/angular-ui-router/src/urlMatcherFactory.js"></script>
+    <script src="bower_components/angular-ui-router/src/urlRouter.js"></script>
+    <script src="bower_components/angular-ui-router/src/view.js"></script>
+    <script src="bower_components/angular-ui-router/src/viewDirective.js"></script>
+    <script src="bower_components/angular-ui-router/src/viewScroll.js"></script>
+    <script src="bower_components/angular-websocket/dist/angular-websocket-mock.js"></script>
+    <script src="bower_components/angular-websocket/dist/angular-websocket.js"></script>
+    <script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
+    <script src="public/js/min/anonymous.min.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
